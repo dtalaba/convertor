@@ -1,13 +1,11 @@
 #include "stdafx.h"
-#include "lungime.h" 
-#include "convertorDlg.h"
+#include "lungime.h"
 #include "afxdialogex.h"
-
+#include "convertorDlg.h"
 
 BEGIN_MESSAGE_MAP(Lungime, CconvertorDlg)
 	ON_EN_CHANGE(IDC_LUNGIME_IN, &Lungime::OnEnChangeLungimeIn)
 END_MESSAGE_MAP()
-
 
 void Lungime::OnEnChangeLungimeIn()
 {

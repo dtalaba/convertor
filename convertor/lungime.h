@@ -6,15 +6,14 @@
 
 class Lungime : public CconvertorDlg
 {
-	// Construction
-public:
-	Lungime();	// standard constructor
 
+public:
+	Lungime(CWnd* pParent = NULL);
+	
+#ifdef AFX_DESIGN_TIME
+	enum { IDD = CconvertorDlg::IDD };
+#endif
 														 
 protected:
-	DECLARE_MESSAGE_MAP() 
-
-public:
-	DECLARE_MESSAGE_MAP()
-	afx_msg void OnEnChangeLungimeIn();
+	void OnEnChangeLungimeIn();
 };

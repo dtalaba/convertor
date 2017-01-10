@@ -47,8 +47,6 @@ END_MESSAGE_MAP()
 
 // CconvertorDlg dialog
 
-
-
 CconvertorDlg::CconvertorDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CONVERTOR_DIALOG, pParent)
 {
