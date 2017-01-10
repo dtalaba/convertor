@@ -185,6 +185,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arie.h" />
     <ClInclude Include="convertor.h" />
     <ClInclude Include="convertorDlg.h" />
     <ClInclude Include="lungime.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="arie.cpp" />
     <ClCompile Include="convertor.cpp" />
     <ClCompile Include="convertorDlg.cpp" />
     <ClCompile Include="lungime.cpp" />

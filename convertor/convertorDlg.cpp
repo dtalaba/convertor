@@ -7,6 +7,11 @@
 #include "convertorDlg.h"
 #include "afxdialogex.h"
 
+
+//include utils
+#include "lungime.h"
+#include <string>
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -62,6 +67,8 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_CBN_SELCHANGE(IDC_UNIT_LUNGIME_IN, &CconvertorDlg::OnCbnSelchangeUnitLungimeIn)
+	ON_EN_CHANGE(IDC_LUNGIME_IN, &CconvertorDlg::OnEnChangeLungimeIn)
 END_MESSAGE_MAP()
 
 
@@ -148,4 +155,41 @@ void CconvertorDlg::OnPaint()
 HCURSOR CconvertorDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+/*Functionalitate Lungime*/
+void CconvertorDlg::OnCbnSelchangeUnitLungimeIn()
+{
+	CString conversionType;
+	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
+	int optionIndex;
+	
+	Lungime lungime;
+
+	int optionIndex = select->GetCurSel();
+	
+	select->GetLBText(optionIndex, conversionType);
+
+	int convertedValue = _wtoi(conversionType);
+
+	int result = lungime.m_To_mm(convertedValue, false);
+
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(result);
+}
+
+
+void CconvertorDlg::OnEnChangeLungimeIn()
+{
+	CString str; 
+	Lungime lungime;
+	
+	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
+
+	int i = _wtoi(str);
+
+	int result = lungime.m_To_mm(i, false);
+	  
+	CString MFCString;
+	MFCString.Format("%f", result);
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(result);
 }

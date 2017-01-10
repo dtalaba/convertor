@@ -1,19 +1,19 @@
 
-// lngime.h : header file
-//
+// lungime.h : header file
+ 
 
-#pragma once
-
-class Lungime : public CconvertorDlg
+class Lungime
 {
 
 public:
-	Lungime(CWnd* pParent = NULL);
-	
-#ifdef AFX_DESIGN_TIME
-	enum { IDD = CconvertorDlg::IDD };
-#endif
-														 
-protected:
-	void OnEnChangeLungimeIn();
+	Lungime();
+	~Lungime();
+
+	double m_To_mm(double value, bool invereConversion);
+	double m_To_cm(double value, bool invereConversion);
+	double m_To_km(double value, bool invereConversion);
+	double m_To_mile(double value, bool invereConversion);
+	double m_To_feet(double value, bool invereConversion);
+	double m_To_inch(double value, bool invereConversion);
+	double m_To_yd(double value, bool invereConversion);
 };
