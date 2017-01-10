@@ -64,7 +64,6 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_STN_CLICKED(IDC_STATIC_Lungime, &CconvertorDlg::OnStnClickedStaticLungime)
 END_MESSAGE_MAP()
 
 
@@ -151,11 +150,4 @@ void CconvertorDlg::OnPaint()
 HCURSOR CconvertorDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
-}
-
-
-
-void CconvertorDlg::OnStnClickedStaticLungime()
-{
-	// TODO: Add your control notification handler code here
 }
