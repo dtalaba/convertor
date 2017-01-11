@@ -34,4 +34,9 @@ protected:
 public:
 	afx_msg void OnCbnSelchangeUnitLungimeIn();
 	afx_msg void OnEnChangeLungimeIn();
+	double StrToDouble(CString str);
+	CString DoubleToStr(double nr);
+	CString GetInputMetricSelect();
+
+	CString ConvertInputControlValue(CString selectVal);
 };

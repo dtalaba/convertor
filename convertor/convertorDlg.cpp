@@ -10,6 +10,7 @@
 
 //include utils
 #include "lungime.h"
+#include "converterUtils.h"
 #include <string>
 
 #ifdef _DEBUG
@@ -51,6 +52,8 @@ END_MESSAGE_MAP()
 
 
 // CconvertorDlg dialog
+Lungime lungime;
+ConverterUtils converterUtils;
 
 CconvertorDlg::CconvertorDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CONVERTOR_DIALOG, pParent)
@@ -157,39 +160,68 @@ HCURSOR CconvertorDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+/*Type conversions*/
+double CconvertorDlg::StrToDouble(CString str)
+{
+	return _wtoi(str);
+}
+
+CString CconvertorDlg::DoubleToStr(double nr)
+{
+	CString result;
+	result.Format(_T("%f"), nr); 
+	return result;
+}
+
+CString CconvertorDlg::GetInputMetricSelect()
+{
+	CString metric;
+	int optionIndex;
+
+	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
+
+	optionIndex = select->GetCurSel();
+	select->GetLBText(optionIndex, metric);
+
+	return metric;
+}
+
+CString CconvertorDlg::ConvertInputControlValue(CString conversionType)
+{
+	CString str;
+
+	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
+	double inputControlVal = CconvertorDlg::StrToDouble(str);
+	const char* strToChar = converterUtils.convtCStrToChar(conversionType);
+	double convertedVal = lungime.convertMetric(inputControlVal, strToChar, true);
+
+	CString outputControlVal = CconvertorDlg::DoubleToStr(convertedVal);
+
+	return outputControlVal;
+}
+
 /*Functionalitate Lungime*/
 void CconvertorDlg::OnCbnSelchangeUnitLungimeIn()
 {
 	CString conversionType;
-	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
-	int optionIndex;
+	CString outControlVal;
 	
-	Lungime lungime;
-
-	int optionIndex = select->GetCurSel();
-	
-	select->GetLBText(optionIndex, conversionType);
-
-	int convertedValue = _wtoi(conversionType);
-
-	int result = lungime.m_To_mm(convertedValue, false);
-
-	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(result);
+	conversionType = CconvertorDlg::GetInputMetricSelect();
+	outControlVal = CconvertorDlg::ConvertInputControlValue(conversionType);
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(outControlVal);
 }
 
 
 void CconvertorDlg::OnEnChangeLungimeIn()
 {
-	CString str; 
-	Lungime lungime;
-	
-	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
+	CString conversionType;
+	CString outControlVal;
 
-	int i = _wtoi(str);
-
-	int result = lungime.m_To_mm(i, false);
-	  
-	CString MFCString;
-	MFCString.Format("%f", result);
-	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(result);
+	conversionType = CconvertorDlg::GetInputMetricSelect();
+	outControlVal = CconvertorDlg::ConvertInputControlValue(conversionType);
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(outControlVal);
 }
+
+
+
