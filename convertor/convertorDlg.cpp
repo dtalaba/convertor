@@ -17,9 +17,6 @@
 #define new DEBUG_NEW
 #endif
 
-
-// CAboutDlg dialog used for App About
-
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -53,7 +50,6 @@ END_MESSAGE_MAP()
 
 // CconvertorDlg dialog
 Lungime lungime;
-ConverterUtils converterUtils;
 
 CconvertorDlg::CconvertorDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CONVERTOR_DIALOG, pParent)
@@ -72,6 +68,7 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_CBN_SELCHANGE(IDC_UNIT_LUNGIME_IN, &CconvertorDlg::OnCbnSelchangeUnitLungimeIn)
 	ON_EN_CHANGE(IDC_LUNGIME_IN, &CconvertorDlg::OnEnChangeLungimeIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_LUNGIME_OUT, &CconvertorDlg::OnCbnSelchangeUnitLungimeOut)
 END_MESSAGE_MAP()
 
 
@@ -151,6 +148,11 @@ void CconvertorDlg::OnPaint()
 	{
 		CDialogEx::OnPaint();
 	}
+
+	CComboBox* lungime_in = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
+	lungime_in->SetCurSel(4);
+	CComboBox* lungime_out = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_OUT);
+	lungime_out->SetCurSel(4);
 }
 
 // The system calls this function to obtain the cursor to display while the user drags
@@ -187,41 +189,66 @@ CString CconvertorDlg::GetInputMetricSelect()
 	return metric;
 }
 
-CString CconvertorDlg::ConvertInputControlValue(CString conversionType)
+CString CconvertorDlg::GetOutputMetricSelect()
 {
-	CString str;
+	CString metric;
+	int optionIndex;
 
-	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
-	double inputControlVal = CconvertorDlg::StrToDouble(str);
-	const char* strToChar = converterUtils.convtCStrToChar(conversionType);
-	double convertedVal = lungime.convertMetric(inputControlVal, strToChar, true);
+	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_OUT);
 
-	CString outputControlVal = CconvertorDlg::DoubleToStr(convertedVal);
+	optionIndex = select->GetCurSel();
+	select->GetLBText(optionIndex, metric);
 
-	return outputControlVal;
+	return metric;
 }
 
-/*Functionalitate Lungime*/
+double CconvertorDlg::convertInputToStandardUnit(CString conversionType)
+{
+	CString str;
+	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
+
+	double inputToStandardUnitValue = CconvertorDlg::StrToDouble(str);
+	double convertedVal = lungime.convertMetric(inputToStandardUnitValue, conversionType, true);
+
+	return convertedVal;
+}
+
+double CconvertorDlg::convertedFinalValue(double valueToBeConverted, CString conversionType)
+{
+	double convertedVal = lungime.convertMetric(valueToBeConverted, conversionType, false);
+
+	return convertedVal;
+}
+
+void CconvertorDlg::LungimeConversionHandler() {
+	CString conversionInputType;
+	CString conversionOutputType;
+	double inputToStandardUnitValue;
+	double finalConvertedValue;
+
+	conversionInputType = CconvertorDlg::GetInputMetricSelect();
+	conversionOutputType = CconvertorDlg::GetOutputMetricSelect();
+
+	inputToStandardUnitValue = CconvertorDlg::convertInputToStandardUnit(conversionInputType);
+	finalConvertedValue = CconvertorDlg::convertedFinalValue(inputToStandardUnitValue, conversionOutputType);
+
+	CString out = CconvertorDlg::DoubleToStr(finalConvertedValue);
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(out);
+}
+
 void CconvertorDlg::OnCbnSelchangeUnitLungimeIn()
 {
-	CString conversionType;
-	CString outControlVal;
-	
-	conversionType = CconvertorDlg::GetInputMetricSelect();
-	outControlVal = CconvertorDlg::ConvertInputControlValue(conversionType);
-	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(outControlVal);
+	CconvertorDlg::LungimeConversionHandler();
 }
 
 
 void CconvertorDlg::OnEnChangeLungimeIn()
 {
-	CString conversionType;
-	CString outControlVal;
-
-	conversionType = CconvertorDlg::GetInputMetricSelect();
-	outControlVal = CconvertorDlg::ConvertInputControlValue(conversionType);
-	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(outControlVal);
+	CconvertorDlg::LungimeConversionHandler();
 }
 
 
-
+void CconvertorDlg::OnCbnSelchangeUnitLungimeOut()
+{
+	CconvertorDlg::LungimeConversionHandler();
+}

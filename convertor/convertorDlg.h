@@ -34,9 +34,17 @@ protected:
 public:
 	afx_msg void OnCbnSelchangeUnitLungimeIn();
 	afx_msg void OnEnChangeLungimeIn();
+
+	/*Helpers*/
 	double StrToDouble(CString str);
 	CString DoubleToStr(double nr);
-	CString GetInputMetricSelect();
 
-	CString ConvertInputControlValue(CString selectVal);
+
+	/*Lungime Helpers*/
+	CString GetInputMetricSelect();
+	CString GetOutputMetricSelect();
+	double convertInputToStandardUnit(CString selectVal);
+	double convertedFinalValue(double valueToBeConverted, CString conversionType);
+	void LungimeConversionHandler();
+	afx_msg void OnCbnSelchangeUnitLungimeOut();
 };
