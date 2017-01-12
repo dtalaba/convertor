@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "lungime.h"
 #include "converterUtils.h"
+#include "lungime.h"
 
 
 ConverterUtils converterUtils;
@@ -52,7 +52,6 @@ double Lungime::m_To_yd(double value, bool invereConversion) {
 
 	return  value * 1.09361;
 }
-
 
 double Lungime::convertMetric(double value, CString metric, bool inverseConversion) {
 	const char* strToChar = converterUtils.convtCStrToChar(metric);

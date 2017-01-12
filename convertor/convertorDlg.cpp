@@ -176,26 +176,24 @@ CString CconvertorDlg::DoubleToStr(double nr)
 	return result;
 }
 
-CString CconvertorDlg::GetInputMetricSelect()
+CString CconvertorDlg::GetLungimeInputMetricSelect()
 {
 	CString metric;
 	int optionIndex;
 
 	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
-
 	optionIndex = select->GetCurSel();
 	select->GetLBText(optionIndex, metric);
 
 	return metric;
 }
 
-CString CconvertorDlg::GetOutputMetricSelect()
+CString CconvertorDlg::GetLungimeOutputMetricSelect()
 {
 	CString metric;
 	int optionIndex;
 
 	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_OUT);
-
 	optionIndex = select->GetCurSel();
 	select->GetLBText(optionIndex, metric);
 
@@ -226,9 +224,8 @@ void CconvertorDlg::LungimeConversionHandler() {
 	double inputToStandardUnitValue;
 	double finalConvertedValue;
 
-	conversionInputType = CconvertorDlg::GetInputMetricSelect();
-	conversionOutputType = CconvertorDlg::GetOutputMetricSelect();
-
+	conversionInputType = CconvertorDlg::GetLungimeInputMetricSelect();
+	conversionOutputType = CconvertorDlg::GetLungimeOutputMetricSelect();
 	inputToStandardUnitValue = CconvertorDlg::convertInputToStandardUnit(conversionInputType);
 	finalConvertedValue = CconvertorDlg::convertedFinalValue(inputToStandardUnitValue, conversionOutputType);
 

@@ -1,6 +1,5 @@
 
 // lungime.h : header file
- 
 
 class Lungime
 {

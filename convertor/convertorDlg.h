@@ -41,8 +41,8 @@ public:
 
 
 	/*Lungime Helpers*/
-	CString GetInputMetricSelect();
-	CString GetOutputMetricSelect();
+	CString GetLungimeInputMetricSelect();
+	CString GetLungimeOutputMetricSelect();
 	double convertInputToStandardUnit(CString selectVal);
 	double convertedFinalValue(double valueToBeConverted, CString conversionType);
 	void LungimeConversionHandler();
