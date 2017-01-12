@@ -1,8 +1,5 @@
 #include "stdafx.h"
-#include "converterUtils.h"
 #include "temperatura.h"
-
-ConverterUtils converterUtils;
 
 Temperatura::Temperatura()
 {
@@ -27,16 +24,14 @@ double Temperatura::cel_To_cel(double value, bool invereConversion)
 	return value;
 }
 
-double Temperatura::convertMetric(double value, CString metric, bool inverseConversion) {
-	const char* strToChar = converterUtils.convtCStrToChar(metric);
-
-	if (strcmp(strToChar, "f") == 0) {
+double Temperatura::convertMetric(double value, const char* metric, bool inverseConversion) {
+	if (strcmp(metric, "f") == 0) {
 		return Temperatura::cel_To_f(value, inverseConversion);
 	} 
-	else if (strcmp(strToChar, "k") == 0) {
+	else if (strcmp(metric, "k") == 0) {
 		return Temperatura::cel_To_k(value, inverseConversion);
 	}
-	else if (strcmp(strToChar, "cel") == 0) {
+	else if (strcmp(metric, "cel") == 0) {
 		return Temperatura::cel_To_cel(value, inverseConversion);
 	}
 

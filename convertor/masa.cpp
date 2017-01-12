@@ -1,8 +1,5 @@
 #include "stdafx.h"
-#include "converterUtils.h"
 #include "masa.h"
-
-ConverterUtils converterUtils;
 
 Masa::Masa()
 {
@@ -41,22 +38,21 @@ double Masa::kg_To_t(double value, bool invereConversion)
 	return value * 1000;
 }
 
-double Masa::convertMetric(double value, CString metric, bool inverseConversion) {
-	const char* strToChar = converterUtils.convtCStrToChar(metric);
+double Masa::convertMetric(double value, const char* metric, bool inverseConversion) {
 
-	if (strcmp(strToChar, "milligm") == 0) {
+	if (strcmp(metric, "milligm") == 0) {
 		return Masa::kg_To_milligm(value, inverseConversion);
 	}
-	else if (strcmp(strToChar, "gm") == 0) {
+	else if (strcmp(metric, "gm") == 0) {
 		return Masa::kg_To_gm(value, inverseConversion);
 	}
-	else if (strcmp(strToChar, "kg") == 0) {
+	else if (strcmp(metric, "kg") == 0) {
 		return Masa::kg_To_kg(value, inverseConversion);
 	}
-	else if (strcmp(strToChar, "pound") == 0) {
+	else if (strcmp(metric, "pound") == 0) {
 		return Masa::kg_To_pound(value, inverseConversion);
 	}
-	else if (strcmp(strToChar, "t") == 0) {
+	else if (strcmp(metric, "t") == 0) {
 		return Masa::kg_To_t(value, inverseConversion);
 	}
 
