@@ -131,6 +131,7 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_RESET_ARIE, &CconvertorDlg::OnBnClickedBtnResetArie)
 	ON_BN_CLICKED(IDC_BTN_RESET_VOLUM, &CconvertorDlg::OnBnClickedBtnResetVolum)
 	ON_BN_CLICKED(IDC_BTN_RESET_TEMP, &CconvertorDlg::OnBnClickedBtnResetTemp)
+	ON_BN_CLICKED(IDC_BTN_RESET_ALL, &CconvertorDlg::OnBnClickedBtnResetAll)
 END_MESSAGE_MAP()
 
 
@@ -212,17 +213,17 @@ void CconvertorDlg::OnPaint()
 	}
 
 
-	CconvertorDlg::resetUnitLungime();
+	CconvertorDlg::setDefaultUnitLungime();
 	CconvertorDlg::resetUnitMasa();
-	CconvertorDlg::resetUnitViteza();
-	CconvertorDlg::resetUnitTimp();
-	CconvertorDlg::resetUnitDensitate();
-	CconvertorDlg::resetUnitEnergie();
-	CconvertorDlg::resetUnitPresiune();
-	CconvertorDlg::resetUnitConsum();
-	CconvertorDlg::resetUnitArie();
-	CconvertorDlg::resetUnitVolum();
-	CconvertorDlg::resetUnitTemp();
+	CconvertorDlg::setDefaultUnitViteza();
+	CconvertorDlg::setDefaultUnitTimp();
+	CconvertorDlg::setDefaultUnitDensitate();
+	CconvertorDlg::setDefaultUnitEnergie();
+	CconvertorDlg::setDefaultUnitPresiune();
+	CconvertorDlg::setDefaultUnitConsum();
+	CconvertorDlg::setDefaultUnitArie();
+	CconvertorDlg::setDefaultUnitVolum();
+	CconvertorDlg::setDefaultUnitTemp();
 }
 
 // The system calls this function to obtain the cursor to display while the user drags
@@ -232,7 +233,7 @@ HCURSOR CconvertorDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CconvertorDlg::resetUnitLungime() {
+void CconvertorDlg::setDefaultUnitLungime() {
 	CComboBox* lungime_in = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_IN);
 	lungime_in->SetCurSel(4);
 	CComboBox* lungime_out = (CComboBox*)GetDlgItem(IDC_UNIT_LUNGIME_OUT);
@@ -244,56 +245,56 @@ void CconvertorDlg::resetUnitMasa() {
 	CComboBox* masa_out = (CComboBox*)GetDlgItem(IDC_UNIT_MASA_OUT);
 	masa_out->SetCurSel(1);
 }
-void CconvertorDlg::resetUnitViteza() {
+void CconvertorDlg::setDefaultUnitViteza() {
 	CComboBox* viteza_in = (CComboBox*)GetDlgItem(IDC_UNIT_VITEZA_IN);
 	viteza_in->SetCurSel(1);
 	CComboBox* viteza_out = (CComboBox*)GetDlgItem(IDC_UNIT_VITEZA_OUT);
 	viteza_out->SetCurSel(1);
 }
-void CconvertorDlg::resetUnitTimp() {
+void CconvertorDlg::setDefaultUnitTimp() {
 	CComboBox* timp_in = (CComboBox*)GetDlgItem(IDC_UNIT_TIMP_IN);
 	timp_in->SetCurSel(3);
 	CComboBox* timp_out = (CComboBox*)GetDlgItem(IDC_UNIT_TIMP_OUT);
 	timp_out->SetCurSel(3);
 }
 
-void CconvertorDlg::resetUnitDensitate() {
+void CconvertorDlg::setDefaultUnitDensitate() {
 	CComboBox* densitate_in = (CComboBox*)GetDlgItem(IDC_UNIT_DENSITATE_IN);
 	densitate_in->SetCurSel(3);
 	CComboBox* densitate_out = (CComboBox*)GetDlgItem(IDC_UNIT_DENSITATE_OUT);
 	densitate_out->SetCurSel(3);
 }
-void CconvertorDlg::resetUnitEnergie() {
+void CconvertorDlg::setDefaultUnitEnergie() {
 	CComboBox* energie_in = (CComboBox*)GetDlgItem(IDC_UNIT_ENERGIE_IN);
 	energie_in->SetCurSel(2);
 	CComboBox* energie_out = (CComboBox*)GetDlgItem(IDC_UNIT_ENERGIE_OUT);
 	energie_out->SetCurSel(2);
 }
-void CconvertorDlg::resetUnitPresiune() {
+void CconvertorDlg::setDefaultUnitPresiune() {
 	CComboBox* presiune_in = (CComboBox*)GetDlgItem(IDC_UNIT_PRESIUNE_IN);
 	presiune_in->SetCurSel(9);
 	CComboBox* presiune_out = (CComboBox*)GetDlgItem(IDC_UNIT_PRESIUNE_OUT);
 	presiune_out->SetCurSel(9);
 }
-void CconvertorDlg::resetUnitConsum() {
+void CconvertorDlg::setDefaultUnitConsum() {
 	CComboBox* consum_in = (CComboBox*)GetDlgItem(IDC_UNIT_CONSUM_IN);
 	consum_in->SetCurSel(2);
 	CComboBox* consum_out = (CComboBox*)GetDlgItem(IDC_UNIT_CONSUM_OUT);
 	consum_out->SetCurSel(2);
 }
-void CconvertorDlg::resetUnitArie() {
+void CconvertorDlg::setDefaultUnitArie() {
 	CComboBox* arie_in = (CComboBox*)GetDlgItem(IDC_UNIT_ARIE_IN);
 	arie_in->SetCurSel(6);
 	CComboBox* arie_out = (CComboBox*)GetDlgItem(IDC_UNIT_ARIE_OUT);
 	arie_out->SetCurSel(6);
 }
-void CconvertorDlg::resetUnitVolum() {
+void CconvertorDlg::setDefaultUnitVolum() {
 	CComboBox* volum_in = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_IN);
 	volum_in->SetCurSel(7);
 	CComboBox* volum_out = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_OUT);
 	volum_out->SetCurSel(7);
 }
-void CconvertorDlg::resetUnitTemp() {
+void CconvertorDlg::setDefaultUnitTemp() {
 	CComboBox* temp_in = (CComboBox*)GetDlgItem(IDC_UNIT_TEMP_IN);
 	temp_in->SetCurSel(0);
 	CComboBox* temp_out = (CComboBox*)GetDlgItem(IDC_UNIT_TEMP_OUT);
@@ -1123,7 +1124,7 @@ void CconvertorDlg::OnCbnSelchangeUnitConsumOut()
 void CconvertorDlg::OnBnClickedBtnResetLungime()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitLungime();
+	CconvertorDlg::setDefaultUnitLungime();
 	GetDlgItem(IDC_LUNGIME_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(resetVal);
 }
@@ -1139,7 +1140,7 @@ void CconvertorDlg::OnBnClickedBtnResetMasa()
 void CconvertorDlg::OnBnClickedBtnResetViteza()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitViteza();
+	CconvertorDlg::setDefaultUnitViteza();
 	GetDlgItem(IDC_VITEZA_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_VITEZA_OUT)->SetWindowText(resetVal);
 }
@@ -1147,7 +1148,7 @@ void CconvertorDlg::OnBnClickedBtnResetViteza()
 void CconvertorDlg::OnBnClickedBtnResetTimp()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitTimp();
+	CconvertorDlg::setDefaultUnitTimp();
 	GetDlgItem(IDC_TIMP_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_TIMP_OUT)->SetWindowText(resetVal);
 }
@@ -1155,7 +1156,7 @@ void CconvertorDlg::OnBnClickedBtnResetTimp()
 void CconvertorDlg::OnBnClickedBtnResetDensitate()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitDensitate();
+	CconvertorDlg::setDefaultUnitDensitate();
 	GetDlgItem(IDC_DENSITATE_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_DENSITATE_OUT)->SetWindowText(resetVal);
 }
@@ -1163,7 +1164,7 @@ void CconvertorDlg::OnBnClickedBtnResetDensitate()
 void CconvertorDlg::OnBnClickedBtnResetEnergie()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitEnergie();
+	CconvertorDlg::setDefaultUnitEnergie();
 	GetDlgItem(IDC_ENERGIE_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_ENERGIE_OUT)->SetWindowText(resetVal);
 }
@@ -1171,7 +1172,7 @@ void CconvertorDlg::OnBnClickedBtnResetEnergie()
 void CconvertorDlg::OnBnClickedBtnResetPresiune()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitPresiune();
+	CconvertorDlg::setDefaultUnitPresiune();
 	GetDlgItem(IDC_PRESIUNE_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_PRESIUNE_OUT)->SetWindowText(resetVal);
 }
@@ -1179,7 +1180,7 @@ void CconvertorDlg::OnBnClickedBtnResetPresiune()
 void CconvertorDlg::OnBnClickedBtnResetConsum()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitConsum();
+	CconvertorDlg::setDefaultUnitConsum();
 	GetDlgItem(IDC_CONSUM_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_CONSUM_OUT)->SetWindowText(resetVal);
 }
@@ -1187,7 +1188,7 @@ void CconvertorDlg::OnBnClickedBtnResetConsum()
 void CconvertorDlg::OnBnClickedBtnResetArie()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitArie();
+	CconvertorDlg::setDefaultUnitArie();
 	GetDlgItem(IDC_ARIE_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_ARIE_OUT)->SetWindowText(resetVal);
 }
@@ -1195,7 +1196,7 @@ void CconvertorDlg::OnBnClickedBtnResetArie()
 void CconvertorDlg::OnBnClickedBtnResetVolum()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitVolum();
+	CconvertorDlg::setDefaultUnitVolum();
 	GetDlgItem(IDC_VOLUM_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_VOLUM_OUT)->SetWindowText(resetVal);
 }
@@ -1203,7 +1204,57 @@ void CconvertorDlg::OnBnClickedBtnResetVolum()
 void CconvertorDlg::OnBnClickedBtnResetTemp()
 {
 	CString resetVal = 0;
-	CconvertorDlg::resetUnitTemp();
+	CconvertorDlg::setDefaultUnitTemp();
+	GetDlgItem(IDC_TEMP_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_TEMP_OUT)->SetWindowText(resetVal);
+}
+
+
+void CconvertorDlg::OnBnClickedBtnResetAll()
+{
+	CString resetVal = 0;
+
+	CconvertorDlg::setDefaultUnitLungime();
+	GetDlgItem(IDC_LUNGIME_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_LUNGIME_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::resetUnitMasa();
+	GetDlgItem(IDC_MASA_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_MASA_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitViteza();
+	GetDlgItem(IDC_VITEZA_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_VITEZA_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitTimp();
+	GetDlgItem(IDC_TIMP_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_TIMP_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitDensitate();
+	GetDlgItem(IDC_DENSITATE_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_DENSITATE_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitEnergie();
+	GetDlgItem(IDC_ENERGIE_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_ENERGIE_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitPresiune();
+	GetDlgItem(IDC_PRESIUNE_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_PRESIUNE_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitConsum();
+	GetDlgItem(IDC_CONSUM_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_CONSUM_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitArie();
+	GetDlgItem(IDC_ARIE_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_ARIE_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitVolum();
+	GetDlgItem(IDC_VOLUM_IN)->SetWindowText(resetVal);
+	GetDlgItem(IDC_VOLUM_OUT)->SetWindowText(resetVal);
+
+	CconvertorDlg::setDefaultUnitTemp();
 	GetDlgItem(IDC_TEMP_IN)->SetWindowText(resetVal);
 	GetDlgItem(IDC_TEMP_OUT)->SetWindowText(resetVal);
 }

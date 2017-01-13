@@ -30,17 +30,17 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
-	void resetUnitLungime();
+	void setDefaultUnitLungime();
 	void resetUnitMasa();
-	void resetUnitViteza();
-	void resetUnitTimp();
-	void resetUnitDensitate();
-	void resetUnitEnergie();
-	void resetUnitPresiune();
-	void resetUnitConsum();
-	void resetUnitArie();
-	void resetUnitVolum();
-	void resetUnitTemp();
+	void setDefaultUnitViteza();
+	void setDefaultUnitTimp();
+	void setDefaultUnitDensitate();
+	void setDefaultUnitEnergie();
+	void setDefaultUnitPresiune();
+	void setDefaultUnitConsum();
+	void setDefaultUnitArie();
+	void setDefaultUnitVolum();
+	void setDefaultUnitTemp();
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnCbnSelchangeUnitLungimeIn();
@@ -145,4 +145,5 @@ public:
 	void OnBnClickedBtnResetArie();
 	void OnBnClickedBtnResetVolum();
 	void OnBnClickedBtnResetTemp();
+	afx_msg void OnBnClickedBtnResetAll();
 };
