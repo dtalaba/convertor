@@ -7,14 +7,14 @@ Aria::Aria()
 
 double Aria::m²_To_mm²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .000001;
-	return value * 1000000;
+	if (invereConversion) return value * 1000000;
+	return value * .000001;
 }
 
 double Aria::m²_To_cm²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .0001;
-	return value * 10000;
+	if (invereConversion) return value * 10000;
+	return value * .0001;
 }
 
 double Aria::m²_To_m²(double value, bool invereConversion)
