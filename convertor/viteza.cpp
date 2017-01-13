@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "converterUtils.h"
 #include "viteza.h"
 
 

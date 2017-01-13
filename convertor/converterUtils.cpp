@@ -13,3 +13,15 @@ const char* ConverterUtils::convtCStrToChar(CString strParam)
 
 	return cstr;
 }
+
+double ConverterUtils::StrToDouble(CString str)
+{
+	return _wtoi(str);
+}
+
+CString ConverterUtils::DoubleToStr(double nr)
+{
+	CString result;
+	result.Format(_T("%f"), nr);
+	return result;
+}

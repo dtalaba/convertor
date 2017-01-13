@@ -1,9 +1,5 @@
 #include "stdafx.h"
-#include "converterUtils.h"
 #include "lungime.h"
-
-
-ConverterUtils converterUtils;
 
 Lungime::Lungime()
 {
@@ -53,31 +49,29 @@ double Lungime::m_To_yd(double value, bool invereConversion) {
 	return  value * 1.09361;
 }
 
-double Lungime::convertMetric(double value, CString metric, bool inverseConversion) {
-	const char* strToChar = converterUtils.convtCStrToChar(metric);
-
-	if (strcmp(strToChar, "mm") == 0) {
+double Lungime::convertMetric(double value, const char* metric, bool inverseConversion) {
+	if (strcmp(metric, "mm") == 0) {
 		return Lungime::m_To_mm(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "cm") == 0) {
+		if (strcmp(metric, "cm") == 0) {
 		return Lungime::m_To_cm(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "m") == 0) {
+		if (strcmp(metric, "m") == 0) {
 		return Lungime::m_To_m(value, inverseConversion);
 	} else
-		if (strcmp(strToChar, "km") == 0) {
+		if (strcmp(metric, "km") == 0) {
 		return Lungime::m_To_km(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "mi") == 0) {
+		if (strcmp(metric, "mi") == 0) {
 		return Lungime::m_To_mile(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "ft") == 0) {
+		if (strcmp(metric, "ft") == 0) {
 		return Lungime::m_To_feet(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "in") == 0) {
+		if (strcmp(metric, "in") == 0) {
 		return Lungime::m_To_inch(value, inverseConversion);
 	} else 
-		if (strcmp(strToChar, "yd") == 0) {
+		if (strcmp(metric, "yd") == 0) {
 		return Lungime::m_To_yd(value, inverseConversion);
 	}
 

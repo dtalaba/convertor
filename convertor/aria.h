@@ -1,9 +1,9 @@
 #pragma once
 
-class Arie
+class Aria
 {
 public:
-	Arie();
+	Aria();
 
 	double m²_To_mm²(double value, bool invereConversion);
 	double m²_To_cm²(double value, bool invereConversion);
@@ -14,6 +14,6 @@ public:
 	double m²_To_inch²(double value, bool invereConversion);
 	double m²_To_acre(double value, bool invereConversion);
 	double m²_To_hect(double value, bool invereConversion);
-	double convertMetric(double value, CString metric, bool inverseConversion);
+	double convertMetric(double value, const char* metric, bool inverseConversion);
 };
 
