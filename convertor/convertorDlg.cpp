@@ -211,9 +211,9 @@ void CconvertorDlg::OnPaint()
 	arie_out->SetCurSel(6);
 
 	CComboBox* volum_in = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_IN);
-	volum_in->SetCurSel(6);
+	volum_in->SetCurSel(7);
 	CComboBox* volum_out = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_OUT);
-	volum_out->SetCurSel(6);
+	volum_out->SetCurSel(7);
 
 	CComboBox* temp_in = (CComboBox*)GetDlgItem(IDC_UNIT_TEMP_IN);
 	temp_in->SetCurSel(0);

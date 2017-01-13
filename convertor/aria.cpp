@@ -7,14 +7,14 @@ Aria::Aria()
 
 double Aria::m²_To_mm²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 1000000;
-	return value * .000001;
+	if (invereConversion) return value * .000001;
+	return value * 1000000;
 }
 
 double Aria::m²_To_cm²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 10000;
-	return value * .0001;
+	if (invereConversion) return value * .0001;
+	return value * 10000;
 }
 
 double Aria::m²_To_m²(double value, bool invereConversion)
@@ -24,8 +24,8 @@ double Aria::m²_To_m²(double value, bool invereConversion)
 
 double Aria::m²_To_km²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .000001;
-	return value * 1000000;
+	if (invereConversion) return value * 1000000;
+	return value * .000001;
 }
 
 double Aria::m²_To_feet²(double value, bool invereConversion)
@@ -48,8 +48,8 @@ double Aria::m²_To_inch²(double value, bool invereConversion)
 
 double Aria::m²_To_acre(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .00024710539999309525;
-	return value * 4046.856119;
+	if (invereConversion) return value * 4046.856119;
+	return value * .00024710539999309525;
 }
 
 double Aria::m²_To_hect(double value, bool invereConversion)

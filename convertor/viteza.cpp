@@ -8,8 +8,8 @@ Viteza::Viteza()
 
 double Viteza::kmh_To_mph(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .6213711922373;
-	return value * 1.609344;
+	if (invereConversion) return value * 1.609344;
+	return value * .6213711922373;
 }
 
 double Viteza::kmh_To_fts(double value, bool invereConversion)
@@ -37,8 +37,8 @@ double Viteza::kmh_To_ms(double value, bool invereConversion)
 
 double Viteza::kmh_To_kn(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .5399568034557;
-	return value * 1.852;
+	if (invereConversion) return value * 1.852;
+	return value * .5399568034557;
 }
 
 double Viteza::convertMetric(double value, CString unit, bool inverseConversion) {

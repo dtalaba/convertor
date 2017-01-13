@@ -26,9 +26,9 @@ double Masa::kg_To_kg(double value, bool invereConversion)
 
 double Masa::kg_To_pound(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 2.20462;
+	if (invereConversion) return value * .45359237;
 
-	return value * .45359;
+	return value * 2.20462;
 }
 
 double Masa::kg_To_t(double value, bool invereConversion)

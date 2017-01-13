@@ -48,8 +48,8 @@ double Volum::mQ_To_inchQ(double value, bool invereConversion)
 
 double Volum::mQ_To_feetQ(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 1222;
-	return value * 123;
+	if (invereConversion) return value * .0283168466;
+	return value * 35.31467;
 }
 
 double Volum::mQ_To_gallon(double value, bool invereConversion)
@@ -87,7 +87,7 @@ double Volum::convertMetric(double value, CString unit, bool inverseConversion) 
 	else if (strcmp(metric, "ft³") == 0) {
 		return Volum::mQ_To_feetQ(value, inverseConversion);
 	}
-	else if (strcmp(metric, "gal") == 0) {
+	else if (strcmp(metric, "galUS") == 0) {
 		return Volum::mQ_To_gallon(value, inverseConversion);
 	}
 
