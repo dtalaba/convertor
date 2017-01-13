@@ -58,16 +58,26 @@ convertorDlg.h, convertorDlg.cpp - the dialog
   Conversion Classes
 ===============================================================================
 
-Lungime (Length) - it's used to convert different types like: mm, cm, m, km, in, ft, mi, yd
+Lungime (Length) - it's used to convert different types like: mm, cm, m, km, in, ft, mi, yd;
+
 Aria (Square) - it's used to convert different types like: mm², cm², m², km², feet², yard², inch², acre, hect;
+
 Temperatura (Temoerature)- it's used to convert different types like: cel, f, k;
+
 Masa (Weight)- it's used to convert different types like: milligm, gm, kg, pound, t;
+
 Volum (Cubic) - it's used to convert different types like: ml, cl, cm³, dl, l, in³, m³, ft³, galUS;
+
 Viteza (Speed) - it's used to convert different types like: mph;kmh;fts;kms;ms;kn;
+
 Timp (Time) - it's used to convert different types like: sec, min, h, zi, saptamana, an, decisec, centisec, milisec, microsec, nanosec;
+
 Densitate (Density) - it's used to convert different types like: kgm, gcm, gm, kgl, tm;
+
 Energie (Energy) - it's used to convert different types like: j, cal, kcal, kj, wh, kwh, ws, erg, nm, therm, kgfcm;
+
 Presiune (Pressure) - it's used to convert different types like: pa, at, atm, bar, inH2O, inHg, kpa, mbar, mpa, nmm², psi, torr;
+
 ConsumCombustibil (Fuel Consumption) - it's used to convert different types like: l100km, milesGalUS, milesGalUK, kmGalUS, kmGalUK;
 
 ================================================================================
