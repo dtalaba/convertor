@@ -1,5 +1,5 @@
 ================================================================================
-    MICROSOFT FOUNDATION CLASS LIBRARY : convertor Project Overview
+    CONVERTOR
 ===============================================================================
 
 The application wizard has created this convertor application for
