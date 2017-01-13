@@ -957,12 +957,10 @@ void CconvertorDlg::OnEnChangeEnergieIn()
 	CconvertorDlg::EnergieConversionHandler();
 }
 
-
 void CconvertorDlg::OnCbnSelchangeUnitEnergieIn()
 {
 	CconvertorDlg::EnergieConversionHandler();
 }
-
 
 void CconvertorDlg::OnCbnSelchangeUnitEnergieOut()
 {
@@ -1034,12 +1032,10 @@ void CconvertorDlg::OnEnChangePresiuneIn()
 	CconvertorDlg::PresiuneConversionHandler();
 }
 
-
 void CconvertorDlg::OnCbnSelchangeUnitPresiuneIn()
 {
 	CconvertorDlg::PresiuneConversionHandler();
 }
-
 
 void CconvertorDlg::OnCbnSelchangeUnitPresiuneOut()
 {
@@ -1111,12 +1107,10 @@ void CconvertorDlg::OnEnChangeConsumIn()
 
 }
 
-
 void CconvertorDlg::OnCbnSelchangeUnitConsumIn()
 {
 	CconvertorDlg::ConsumConversionHandler();
 }
-
 
 void CconvertorDlg::OnCbnSelchangeUnitConsumOut()
 {
@@ -1125,7 +1119,7 @@ void CconvertorDlg::OnCbnSelchangeUnitConsumOut()
 }
 /*End Consum*/
 
-
+/*Reset handlers*/
 void CconvertorDlg::OnBnClickedBtnResetLungime()
 {
 	CString resetVal = 0;
