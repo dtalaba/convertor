@@ -5,8 +5,3 @@
 Viteza::Viteza()
 {
 }
-
-
-Viteza::~Viteza()
-{
-}
