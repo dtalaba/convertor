@@ -27,7 +27,7 @@ double Timp::h_To_h(double value, bool invereConversion)
 double Timp::h_To_zi(double value, bool invereConversion)
 {
 	if (invereConversion) return value * .0416666667;
-	return value * 24
+	return value * 24;
 }
 
 double Timp::h_To_saptamana(double value, bool invereConversion)
