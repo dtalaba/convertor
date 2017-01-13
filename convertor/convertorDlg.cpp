@@ -12,6 +12,7 @@
 #include "converterUtils.h"
 #include "lungime.h"
 #include "aria.h"
+#include "volum.h"
 #include "temperatura.h"
 #include "masa.h"
 #include <string>
@@ -57,6 +58,7 @@ Lungime lungime;
 Aria aria;
 Temperatura temp;
 Masa masa;
+Volum volum;
 
 CconvertorDlg::CconvertorDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CONVERTOR_DIALOG, pParent)
@@ -82,6 +84,12 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_EN_CHANGE(IDC_TEMP_IN, &CconvertorDlg::OnEnChangeTempIn)
 	ON_CBN_SELCHANGE(IDC_UNIT_TEMP_IN, &CconvertorDlg::OnCbnSelchangeUnitTempIn)
 	ON_CBN_SELCHANGE(IDC_UNIT_TEMP_OUT, &CconvertorDlg::OnCbnSelchangeUnitTempOut)
+	ON_CBN_SELCHANGE(IDC_UNIT_MASA_IN, &CconvertorDlg::OnCbnSelchangeUnitMasaIn)
+	ON_EN_CHANGE(IDC_MASA_IN, &CconvertorDlg::OnEnChangeMasaIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_MASA_OUT, &CconvertorDlg::OnCbnSelchangeUnitMasaOut)
+	ON_EN_CHANGE(IDC_VOLUM_IN, &CconvertorDlg::OnEnChangeVolumIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_VOLUM_IN, &CconvertorDlg::OnCbnSelchangeUnitVolumIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_VOLUM_OUT, &CconvertorDlg::OnCbnSelchangeUnitVolumOut)
 END_MESSAGE_MAP()
 
 
@@ -181,6 +189,11 @@ void CconvertorDlg::OnPaint()
 	temp_in->SetCurSel(0);
 	CComboBox* temp_out = (CComboBox*)GetDlgItem(IDC_UNIT_TEMP_OUT);
 	temp_out->SetCurSel(0);
+
+	CComboBox* masa_in = (CComboBox*)GetDlgItem(IDC_UNIT_MASA_IN);
+	masa_in->SetCurSel(1);
+	CComboBox* masa_out = (CComboBox*)GetDlgItem(IDC_UNIT_MASA_OUT);
+	masa_out->SetCurSel(1);
 }
 
 // The system calls this function to obtain the cursor to display while the user drags
@@ -221,17 +234,15 @@ double CconvertorDlg::convertLungimeInputToStandardUnit(CString conversionType)
 	CString str;
 	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
 
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
 	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
-	double convertedVal = lungime.convertMetric(inputToStandardUnitValue, unit, true);
+	double convertedVal = lungime.convertMetric(inputToStandardUnitValue, conversionType, true);
 
 	return convertedVal;
 }
 
 double CconvertorDlg::convertedLungimeFinalValue(double valueToBeConverted, CString conversionType)
 {
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
-	double convertedVal = lungime.convertMetric(valueToBeConverted, unit, false);
+	double convertedVal = lungime.convertMetric(valueToBeConverted, conversionType, false);
 
 	return convertedVal;
 }
@@ -268,7 +279,6 @@ void CconvertorDlg::OnCbnSelchangeUnitLungimeOut()
 	CconvertorDlg::LungimeConversionHandler();
 }
 
-
 /*End Lungime*/
 
 /*Aria*/
@@ -301,17 +311,15 @@ double CconvertorDlg::convertArieToStandardUnit(CString conversionType)
 	CString str;
 	GetDlgItem(IDC_ARIE_IN)->GetWindowText(str);
 
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
 	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
-	double convertedVal = aria.convertMetric(inputToStandardUnitValue, unit, true);
+	double convertedVal = aria.convertMetric(inputToStandardUnitValue, conversionType, true);
 
 	return convertedVal;
 }
 
 double CconvertorDlg::convertedArieFinalValue(double valueToBeConverted, CString conversionType)
 {
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
-	double convertedVal = aria.convertMetric(valueToBeConverted, unit, false);
+	double convertedVal = aria.convertMetric(valueToBeConverted, conversionType, false);
 
 	return convertedVal;
 }
@@ -381,17 +389,15 @@ double CconvertorDlg::convertTempToStandardUnit(CString conversionType)
 	CString str;
 	GetDlgItem(IDC_TEMP_IN)->GetWindowText(str);
 
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
 	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
-	double convertedVal = temp.convertMetric(inputToStandardUnitValue, unit, true);
+	double convertedVal = temp.convertMetric(inputToStandardUnitValue, conversionType, true);
 
 	return convertedVal;
 }
 
 double CconvertorDlg::convertedTempFinalValue(double valueToBeConverted, CString conversionType)
 {
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
-	double convertedVal = temp.convertMetric(valueToBeConverted, unit, false);
+	double convertedVal = temp.convertMetric(valueToBeConverted, conversionType, false);
 
 	return convertedVal;
 }
@@ -430,7 +436,7 @@ void CconvertorDlg::OnCbnSelchangeUnitTempOut()
 
 /*End Temp*/
 
-/*End Masa*/
+/*Masa*/
 CString CconvertorDlg::GetMasaInputMetricSelect()
 {
 	CString metric;
@@ -460,17 +466,15 @@ double CconvertorDlg::convertMasaToStandardUnit(CString conversionType)
 	CString str;
 	GetDlgItem(IDC_MASA_IN)->GetWindowText(str);
 
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
 	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
-	double convertedVal = masa.convertMetric(inputToStandardUnitValue, unit, true);
+	double convertedVal = masa.convertMetric(inputToStandardUnitValue, conversionType, true);
 
 	return convertedVal;
 }
 
 double CconvertorDlg::convertedMasaFinalValue(double valueToBeConverted, CString conversionType)
 {
-	const char* unit = converterUtils.convtCStrToChar(conversionType);
-	double convertedVal = masa.convertMetric(valueToBeConverted, unit, false);
+	double convertedVal = masa.convertMetric(valueToBeConverted, conversionType, false);
 
 	return convertedVal;
 }
@@ -490,4 +494,97 @@ void CconvertorDlg::MasaConversionHandler() {
 	GetDlgItem(IDC_MASA_OUT)->SetWindowText(out);
 }
 
+void CconvertorDlg::OnCbnSelchangeUnitMasaIn()
+{
+	CconvertorDlg::MasaConversionHandler();
+}
+
+
+void CconvertorDlg::OnEnChangeMasaIn()
+{
+	CconvertorDlg::MasaConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitMasaOut()
+{
+	CconvertorDlg::MasaConversionHandler();
+}
 /*End Masa*/
+
+
+/*Volum*/
+CString CconvertorDlg::GetVolumInputMetricSelect()
+{
+	CString metric;
+	int optionIndex;
+
+	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_IN);
+	optionIndex = select->GetCurSel();
+	select->GetLBText(optionIndex, metric);
+
+	return metric;
+}
+
+CString CconvertorDlg::GetVolumOutputMetricSelect()
+{
+	CString metric;
+	int optionIndex;
+
+	CComboBox* select = (CComboBox*)GetDlgItem(IDC_UNIT_VOLUM_OUT);
+	optionIndex = select->GetCurSel();
+	select->GetLBText(optionIndex, metric);
+
+	return metric;
+}
+
+double CconvertorDlg::convertVolumToStandardUnit(CString conversionType)
+{
+	CString str;
+	GetDlgItem(IDC_VOLUM_IN)->GetWindowText(str);
+
+	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
+	double convertedVal = volum.convertMetric(inputToStandardUnitValue, conversionType, true);
+
+	return convertedVal;
+}
+
+double CconvertorDlg::convertedVolumFinalValue(double valueToBeConverted, CString conversionType)
+{
+	double convertedVal = volum.convertMetric(valueToBeConverted, conversionType, false);
+
+	return convertedVal;
+}
+
+void CconvertorDlg::VolumConversionHandler() {
+	CString conversionInputType;
+	CString conversionOutputType;
+	double inputToStandardUnitValue;
+	double finalConvertedValue;
+
+	conversionInputType = CconvertorDlg::GetVolumInputMetricSelect();
+	conversionOutputType = CconvertorDlg::GetVolumOutputMetricSelect();
+	inputToStandardUnitValue = CconvertorDlg::convertVolumToStandardUnit(conversionInputType);
+	finalConvertedValue = CconvertorDlg::convertedVolumFinalValue(inputToStandardUnitValue, conversionOutputType);
+
+	CString out = converterUtils.DoubleToStr(finalConvertedValue);
+	GetDlgItem(IDC_VOLUM_OUT)->SetWindowText(out);
+}
+
+void CconvertorDlg::OnEnChangeVolumIn()
+{
+	CconvertorDlg::VolumConversionHandler();
+}
+/*End Volum*/
+
+void CconvertorDlg::OnCbnSelchangeUnitVolumIn()
+{
+	CconvertorDlg::VolumConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitVolumOut()
+{
+	CconvertorDlg::VolumConversionHandler();
+}
+/*End Volum*/

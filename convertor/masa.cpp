@@ -7,16 +7,16 @@ Masa::Masa()
 
 double Masa::kg_To_milligm(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 1000000;
+	if (invereConversion) return value * .000001;
 
-	return value * .000001;
+	return value * 1000000;
 }
 
 double Masa::kg_To_gm(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 1000;
+	if (invereConversion) return value * .001;
 
-	return value * .001;
+	return value * 1000;
 }
 
 double Masa::kg_To_kg(double value, bool invereConversion)
@@ -33,13 +33,14 @@ double Masa::kg_To_pound(double value, bool invereConversion)
 
 double Masa::kg_To_t(double value, bool invereConversion)
 {
-	if (invereConversion) return value * .001;
+	if (invereConversion) return value * 1000;
 
-	return value * 1000;
+	return value * .001;
 }
 
-double Masa::convertMetric(double value, const char* metric, bool inverseConversion) {
-
+double Masa::convertMetric(double value, CString unit, bool inverseConversion) {
+	USES_CONVERSION;
+	const char* metric = T2A((LPCTSTR)unit);
 	if (strcmp(metric, "milligm") == 0) {
 		return Masa::kg_To_milligm(value, inverseConversion);
 	}

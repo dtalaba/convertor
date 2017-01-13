@@ -63,4 +63,15 @@ public:
 	double convertMasaToStandardUnit(CString conversionType);
 	double convertedMasaFinalValue(double valueToBeConverted, CString conversionType);
 	void MasaConversionHandler();
+	afx_msg void OnCbnSelchangeUnitMasaIn();
+	afx_msg void OnEnChangeMasaIn();
+	afx_msg void OnCbnSelchangeUnitMasaOut();
+	CString GetVolumInputMetricSelect();
+	CString GetVolumOutputMetricSelect();
+	double convertVolumToStandardUnit(CString conversionType);
+	double convertedVolumFinalValue(double valueToBeConverted, CString conversionType);
+	void VolumConversionHandler();
+	afx_msg void OnEnChangeVolumIn();
+	afx_msg void OnCbnSelchangeUnitVolumIn();
+	afx_msg void OnCbnSelchangeUnitVolumOut();
 };

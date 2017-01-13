@@ -24,7 +24,9 @@ double Temperatura::cel_To_cel(double value, bool invereConversion)
 	return value;
 }
 
-double Temperatura::convertMetric(double value, const char* metric, bool inverseConversion) {
+double Temperatura::convertMetric(double value, CString unit, bool inverseConversion) {
+	USES_CONVERSION;
+	const char* metric = T2A((LPCTSTR)unit);
 	if (strcmp(metric, "f") == 0) {
 		return Temperatura::cel_To_f(value, inverseConversion);
 	} 

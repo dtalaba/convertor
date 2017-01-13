@@ -24,8 +24,8 @@ double Aria::m²_To_m²(double value, bool invereConversion)
 
 double Aria::m²_To_km²(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 1000000;
-	return value *.000001;
+	if (invereConversion) return value * .000001;
+	return value * 1000000;
 }
 
 double Aria::m²_To_feet²(double value, bool invereConversion)
@@ -59,7 +59,9 @@ double Aria::m²_To_hect(double value, bool invereConversion)
 }
 
 
-double Aria::convertMetric(double value, const char* metric, bool inverseConversion) {
+double Aria::convertMetric(double value, CString unit, bool inverseConversion) {
+	USES_CONVERSION;
+	const char* metric = T2A((LPCTSTR)unit);
 	if (strcmp(metric, "mm²") == 0) {
 		return Aria::m²_To_mm²(value, inverseConversion);
 	}
