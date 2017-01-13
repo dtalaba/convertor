@@ -13,20 +13,20 @@ double ConsumCombustibil::l100km_To_l100km(double value, bool invereConversion)
 
 double ConsumCombustibil::l100km_To_milesGalUS(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 235.2145833;
-	return value * 235.2145833;
+	if (invereConversion) return value * 2.3521458357;
+	return value * .425143707;
 }
 
 double ConsumCombustibil::l100km_To_milesGalUK(double value, bool invereConversion)
 {
-	if (invereConversion) return value * 282.4809363;
-	return value * 282.4809363;
+	if (invereConversion) return value * 2.8248092830;
+	return value * .3540062;
 }
 
 double ConsumCombustibil::l100km_To_kmGalUS(double value, bool invereConversion)
 {
 	if (invereConversion) return value * 378.5411784;
-	return value * 378.5411784;
+	return value * 378.541178;
 }
 
 double ConsumCombustibil::l100km_To_kmGalUK(double value, bool invereConversion)
