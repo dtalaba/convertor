@@ -111,6 +111,15 @@ BEGIN_MESSAGE_MAP(CconvertorDlg, CDialogEx)
 	ON_EN_CHANGE(IDC_DENSITATE_IN, &CconvertorDlg::OnEnChangeDensitateIn)
 	ON_CBN_SELCHANGE(IDC_UNIT_DENSITATE_IN, &CconvertorDlg::OnCbnSelchangeUnitDensitateIn)
 	ON_CBN_SELCHANGE(IDC_UNIT_DENSITATE_OUT, &CconvertorDlg::OnCbnSelchangeUnitDensitateOut)
+	ON_EN_CHANGE(IDC_ENERGIE_IN, &CconvertorDlg::OnEnChangeEnergieIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_ENERGIE_IN, &CconvertorDlg::OnCbnSelchangeUnitEnergieIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_ENERGIE_OUT, &CconvertorDlg::OnCbnSelchangeUnitEnergieOut)
+	ON_EN_CHANGE(IDC_CONSUM_IN, &CconvertorDlg::OnEnChangeConsumIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_CONSUM_IN, &CconvertorDlg::OnCbnSelchangeUnitConsumIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_CONSUM_OUT, &CconvertorDlg::OnCbnSelchangeUnitConsumOut)
+	ON_EN_CHANGE(IDC_PRESIUNE_IN, &CconvertorDlg::OnEnChangePresiuneIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_PRESIUNE_IN, &CconvertorDlg::OnCbnSelchangeUnitPresiuneIn)
+	ON_CBN_SELCHANGE(IDC_UNIT_PRESIUNE_OUT, &CconvertorDlg::OnCbnSelchangeUnitPresiuneOut)
 END_MESSAGE_MAP()
 
 
@@ -230,6 +239,21 @@ void CconvertorDlg::OnPaint()
 	densitate_in->SetCurSel(3);
 	CComboBox* densitate_out = (CComboBox*)GetDlgItem(IDC_UNIT_DENSITATE_OUT);
 	densitate_out->SetCurSel(3);
+
+	CComboBox* energie_in = (CComboBox*)GetDlgItem(IDC_UNIT_ENERGIE_IN);
+	energie_in->SetCurSel(2);
+	CComboBox* energie_out = (CComboBox*)GetDlgItem(IDC_UNIT_ENERGIE_OUT);
+	energie_out->SetCurSel(2);
+
+	CComboBox* presiune_in = (CComboBox*)GetDlgItem(IDC_UNIT_PRESIUNE_IN);
+	presiune_in->SetCurSel(9);
+	CComboBox* presiune_out = (CComboBox*)GetDlgItem(IDC_UNIT_PRESIUNE_OUT);
+	presiune_out->SetCurSel(9);
+
+	CComboBox* consum_in = (CComboBox*)GetDlgItem(IDC_UNIT_CONSUM_IN);
+	consum_in->SetCurSel(2);
+	CComboBox* consum_out = (CComboBox*)GetDlgItem(IDC_UNIT_CONSUM_OUT);
+	consum_out->SetCurSel(2);
 }
 
 // The system calls this function to obtain the cursor to display while the user drags
@@ -753,7 +777,6 @@ void CconvertorDlg::OnCbnSelchangeUnitTimpIn()
 	CconvertorDlg::TimpConversionHandler();
 }
 
-
 void CconvertorDlg::OnCbnSelchangeUnitTimpOut()
 {
 	CconvertorDlg::TimpConversionHandler();
@@ -824,12 +847,10 @@ void CconvertorDlg::OnEnChangeDensitateIn()
 	CconvertorDlg::DensitateConversionHandler();
 }
 
-
 void CconvertorDlg::OnCbnSelchangeUnitDensitateIn()
 {
 	CconvertorDlg::DensitateConversionHandler();
 }
-
 
 void CconvertorDlg::OnCbnSelchangeUnitDensitateOut()
 {
@@ -894,6 +915,24 @@ void CconvertorDlg::EnergieConversionHandler() {
 	CString out = converterUtils.DoubleToStr(finalConvertedValue);
 	GetDlgItem(IDC_ENERGIE_OUT)->SetWindowText(out);
 }
+
+void CconvertorDlg::OnEnChangeEnergieIn()
+{
+	CconvertorDlg::EnergieConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitEnergieIn()
+{
+	CconvertorDlg::EnergieConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitEnergieOut()
+{
+	CconvertorDlg::EnergieConversionHandler();
+
+}
 /*End Energie*/
 
 /*Presiune*/
@@ -953,6 +992,23 @@ void CconvertorDlg::PresiuneConversionHandler() {
 	CString out = converterUtils.DoubleToStr(finalConvertedValue);
 	GetDlgItem(IDC_PRESIUNE_OUT)->SetWindowText(out);
 }
+
+void CconvertorDlg::OnEnChangePresiuneIn()
+{
+	CconvertorDlg::PresiuneConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitPresiuneIn()
+{
+	CconvertorDlg::PresiuneConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitPresiuneOut()
+{
+	CconvertorDlg::PresiuneConversionHandler();
+}
 /*End Presiune*/
 
 /*Consum*/
@@ -1011,5 +1067,24 @@ void CconvertorDlg::ConsumConversionHandler() {
 
 	CString out = converterUtils.DoubleToStr(finalConvertedValue);
 	GetDlgItem(IDC_CONSUM_OUT)->SetWindowText(out);
+}
+
+void CconvertorDlg::OnEnChangeConsumIn()
+{
+	CconvertorDlg::ConsumConversionHandler();
+
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitConsumIn()
+{
+	CconvertorDlg::ConsumConversionHandler();
+}
+
+
+void CconvertorDlg::OnCbnSelchangeUnitConsumOut()
+{
+	CconvertorDlg::ConsumConversionHandler();
+
 }
 /*End Consum*/

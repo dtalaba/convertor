@@ -114,4 +114,13 @@ public:
 	double convertConsumToStandardUnit(CString conversionType);
 	double convertedConsumFinalValue(double valueToBeConverted, CString conversionType);
 	void ConsumConversionHandler();
+	afx_msg void OnEnChangeEnergieIn();
+	afx_msg void OnCbnSelchangeUnitEnergieIn();
+	afx_msg void OnCbnSelchangeUnitEnergieOut();
+	afx_msg void OnEnChangeConsumIn();
+	afx_msg void OnCbnSelchangeUnitConsumIn();
+	afx_msg void OnCbnSelchangeUnitConsumOut();
+	afx_msg void OnEnChangePresiuneIn();
+	afx_msg void OnCbnSelchangeUnitPresiuneIn();
+	afx_msg void OnCbnSelchangeUnitPresiuneOut();
 };

@@ -47,7 +47,7 @@ double Energie::j_To_ws(double value, bool invereConversion)
 
 double Energie::j_To_erg(double value, bool invereConversion)
 {
-	if (invereConversion) return value * (pow(10, -7);
+	if (invereConversion) return value * pow(10, -7);
 	return value * 10000000;
 }
 
