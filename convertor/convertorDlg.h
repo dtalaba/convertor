@@ -50,7 +50,7 @@ public:
 	CString GetLungimeInputMetricSelect();
 	CString GetLungimeOutputMetricSelect();
 	double convertLungimeInputToStandardUnit(CString selectVal);
-	double convertedLungimeFinalValue(double valueToBeConverted, CString conversionType);
+	long double convertedLungimeFinalValue(long double valueToBeConverted, CString conversionType);
 	double convertedArieFinalValue(double valueToBeConverted, CString conversionType);
 	void AriaConversionHandler();
 	void LungimeConversionHandler();

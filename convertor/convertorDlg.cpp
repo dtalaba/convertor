@@ -331,15 +331,15 @@ double CconvertorDlg::convertLungimeInputToStandardUnit(CString conversionType)
 	CString str;
 	GetDlgItem(IDC_LUNGIME_IN)->GetWindowText(str);
 
-	double inputToStandardUnitValue = converterUtils.StrToDouble(str);
-	double convertedVal = lungime.convertMetric(inputToStandardUnitValue, conversionType, true);
+	long double inputToStandardUnitValue = converterUtils.StrToDouble(str);
+	long double convertedVal = lungime.convertMetric(inputToStandardUnitValue, conversionType, true);
 
 	return convertedVal;
 }
 
-double CconvertorDlg::convertedLungimeFinalValue(double valueToBeConverted, CString conversionType)
+long double CconvertorDlg::convertedLungimeFinalValue(long double valueToBeConverted, CString conversionType)
 {
-	double convertedVal = lungime.convertMetric(valueToBeConverted, conversionType, false);
+	long double convertedVal = lungime.convertMetric(valueToBeConverted, conversionType, false);
 
 	return convertedVal;
 }
@@ -347,8 +347,8 @@ double CconvertorDlg::convertedLungimeFinalValue(double valueToBeConverted, CStr
 void CconvertorDlg::LungimeConversionHandler() {
 	CString conversionInputType;
 	CString conversionOutputType;
-	double inputToStandardUnitValue;
-	double finalConvertedValue;
+	long double inputToStandardUnitValue;
+	long double finalConvertedValue;
 
 	conversionInputType = CconvertorDlg::GetLungimeInputMetricSelect();
 	conversionOutputType = CconvertorDlg::GetLungimeOutputMetricSelect();

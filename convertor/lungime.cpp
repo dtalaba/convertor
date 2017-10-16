@@ -5,7 +5,7 @@ Lungime::Lungime()
 {
 }
 
-double Lungime::m_To_mm(double value, bool invereConversion)
+long double Lungime::m_To_mm(long double value, bool invereConversion)
 {
 	if (invereConversion) return value * .001;
 
@@ -23,7 +23,7 @@ double Lungime::m_To_m(double value, bool invereConversion)
 
 	return  value;
 }
-double Lungime::m_To_km(double value, bool invereConversion) {
+long double Lungime::m_To_km(long double value, bool invereConversion) {
 	if (invereConversion) return value * 1000;
 
 	return value * 0.001;
@@ -49,9 +49,10 @@ double Lungime::m_To_yd(double value, bool invereConversion) {
 	return  value * 1.09361;
 }
 
-double Lungime::convertMetric(double value, CString unit, bool inverseConversion) {
+long double Lungime::convertMetric(long double value, CString unit, bool inverseConversion) {
 	USES_CONVERSION;
 	const char* metric = T2A((LPCTSTR)unit);
+
 	if (strcmp(metric, "mm") == 0) {
 		return Lungime::m_To_mm(value, inverseConversion);
 	} else 
